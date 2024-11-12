@@ -14,11 +14,13 @@ struct RecipeResponse: Decodable {
 }
 
 
-struct Recipe: Decodable {
+struct Recipe: Decodable, Identifiable {
+    var id: Int
     let title: String
-    let featuredImage: String
+    let featuredImage: URL
     
     private enum CodingKeys: String, CodingKey {
+        case id = "pk"
         case title
         case featuredImage = "featured_image"
     }
